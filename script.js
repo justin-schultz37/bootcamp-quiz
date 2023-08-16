@@ -32,7 +32,7 @@ const questions = [
         question: "Arrays in Javascript can be used to store:",
         answers: [
             { text: "numbers and strings", correct: false },
-            { text: "other arrayws", correct: false },
+            { text: "other arrays", correct: false },
             { text: "booleans", correct: false },
             { text: "all of the above", correct: true }
         ]
@@ -51,15 +51,23 @@ let currentQuestionIndex = 0;
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
+
+    answerButtons.forEach((button) => {
+        button.removeEventListener("click", handleAnswerClick);
+    });
+
     question.answers.forEach((answer, index) => {
         answerButtons[index].innerText = answer.text;
-        answerButtons[index].addEventListener("click", () => selectAnswer(answer));
+        answerButtons[index].addEventListener("click", () => handleAnswerClick(answer));
+        answerButtons[index].disabled = false;
     });
+
+    nextButton.disabled = true;
 }
 
-function selectAnswer(answer) {
-    answerButtons.forEach(button => {
-        button.removeEventListener("click", () => selectAnswer(answer));
+function handleAnswerClick(answer) {
+    answerButtons.forEach((button) => {
+        button.removeEventListener("click", handleAnswerClick);
         button.disabled = true;
     });
 

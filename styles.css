@@ -6,14 +6,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #a75353;
 }
 
 .quiz-container {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    padding: 65px;
     text-align: center;
 }
 
@@ -30,11 +30,11 @@ body {
 }
 
 .answer-btn:hover {
-    background-color: #ddd;
+    background-color: #d16c6c;
 }
 
 .next-btn {
-    background-color: #007bff;
+    background-color: #e5562a;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -44,5 +44,5 @@ body {
 }
 
 .next-btn:hover {
-    background-color: #0056b3;
+    background-color: #f08061;
 }
