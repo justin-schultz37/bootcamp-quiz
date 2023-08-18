@@ -73,6 +73,7 @@ function startQuiz() {
     currentQuestionIndex = 0;
     showQuestion(questions[currentQuestionIndex]);
     document.getElementById("quizContainer").style.display = "block"; // Show the quiz container
+    document.getElementById('start-btn').style.display = 'none'; // Removes start button once quiz begins
     nextButton.disabled = true;
     startButton.disabled = true;
     startTimer();
@@ -106,9 +107,9 @@ function handleAnswerClick(answer) {
     });
 
     if (answer.correct === true) {
-        console.log("Correct!")
+        nextButton.textContent = 'Correct!';
     } else {
-        console.log("Incorrect!");
+        nextButton.textContent = 'Incorrect';
     }
 
     nextButton.disabled = false;
