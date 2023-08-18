@@ -46,3 +46,13 @@ body {
 .next-btn:hover {
     background-color: #f08061;
 }
+
+#start-btn {
+    background-color: #e5562a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}

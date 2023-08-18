@@ -1,6 +1,8 @@
 const questionElement = document.getElementById("question");
 const answerButtons = document.querySelectorAll(".answer-btn");
 const nextButton = document.getElementById("next-btn");
+const startButton = document.getElementById("start-btn");
+const timerElement = document.getElementById("timer");
 
 const questions = [
     {
@@ -47,7 +49,9 @@ const questions = [
     },
 ];
 
-let currentQuestionIndex = 0;
+let currentQuestionIndex = -1;
+let timerInterval;
+let timeLeft = 60;
 
 function showQuestion(question) {
     questionElement.innerText = question.question;
@@ -65,14 +69,44 @@ function showQuestion(question) {
     nextButton.disabled = true;
 }
 
+function startQuiz() {
+    currentQuestionIndex = 0;
+    showQuestion(questions[currentQuestionIndex]);
+    document.getElementById("quizContainer").style.display = "block"; // Show the quiz container
+    nextButton.disabled = true;
+    startButton.disabled = true;
+    startTimer();
+}
+
+function startTimer() {
+    timerInterval = setInterval(updateTimer, 1000);
+    updateTimer(); // Start the timer immediately
+}
+
+function updateTimer() {
+    timeLeft--;
+    if (timeLeft >= 0) {
+        timerElement.innerText = `Time left: ${timeLeft} seconds`;
+    } else {
+        clearInterval(timerInterval);
+        handleTimeUp();
+    }
+}
+
+function handleTimeUp() {
+    console.log("Time's up!");
+    clearInterval(timerInterval); // Stop the timer
+    nextQuestion();
+}
+
 function handleAnswerClick(answer) {
     answerButtons.forEach((button) => {
         button.removeEventListener("click", handleAnswerClick);
         button.disabled = true;
     });
 
-    if (answer.correct) {
-        console.log("Correct!");
+    if (answer.correct === true) {
+        console.log("Correct!")
     } else {
         console.log("Incorrect!");
     }
@@ -90,5 +124,5 @@ function nextQuestion() {
     }
 }
 
-showQuestion(questions[currentQuestionIndex]);
+startButton.addEventListener("click", startQuiz); // Add this line
 nextButton.addEventListener("click", nextQuestion);
