@@ -1,3 +1,9 @@
+:root {
+    --primary-color: #e5562a;
+    --secondary-color: #f4f4f4;
+    --hover-color: #d16c6c;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -17,42 +23,51 @@ body {
     text-align: center;
 }
 
-.answer-btn {
+.answer-btn,
+.next-btn,
+#start-btn,
+#restart-btn {
     display: block;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    background-color: #f4f4f4;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.answer-btn:hover {
-    background-color: #d16c6c;
+.answer-btn {
+    background-color: var(--secondary-color);
 }
 
-.next-btn {
-    background-color: #e5562a;
+.answer-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.next-btn,
+#start-btn,
+#restart-btn {
+    background-color: var(--primary-color);
     color: #fff;
-    border: none;
-    border-radius: 5px;
     padding: 10px 20px;
     margin-top: 20px;
-    cursor: pointer;
 }
 
-.next-btn:hover {
+.next-btn:hover,
+#start-btn:hover,
+#restart-btn:hover {
     background-color: #f08061;
 }
 
-#start-btn {
-    background-color: #e5562a;
-    color: #fff;
+.score-table li {
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: var(--secondary-color);
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    margin-top: 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }

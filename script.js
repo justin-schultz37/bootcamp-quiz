@@ -3,6 +3,10 @@ const answerButtons = document.querySelectorAll(".answer-btn");
 const nextButton = document.getElementById("next-btn");
 const startButton = document.getElementById("start-btn");
 const timerElement = document.getElementById("timer");
+const saveButton = document.getElementById("saveButton");
+const scoreList = document.getElementById("scoreList");
+
+let score = 0;
 
 const questions = [
     {
@@ -108,6 +112,7 @@ function handleAnswerClick(answer) {
 
     if (answer.correct === true) {
         nextButton.textContent = 'Correct!';
+        score++;
     } else {
         nextButton.textContent = 'Wrong!';
         timeLeft -= 2;
@@ -126,8 +131,28 @@ function nextQuestion() {
         nextButton.disabled = true;
     } else {
         console.log("Quiz completed.");
+        document.getElementById("finalScore").style.display = "block";
+        document.getElementById("score").textContent = score;
     }
 }
 
-startButton.addEventListener("click", startQuiz); // Add this line
+startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
+saveButton.addEventListener("click", function () {
+    const initials = document.getElementById("initials").value;
+    if (initials !== "") {
+        const savedScoreItem = document.createElement("li");
+        savedScoreItem.textContent = `${initials}: ${score}`;
+        scoreList.appendChild(savedScoreItem);
+
+        // Clear input and reset score
+        document.getElementById("initials").value = "";
+        score = 0;
+
+        // Hide the score entry form
+        document.getElementById("finalScore").style.display = "none";
+
+        // Show the saved scores section
+        document.getElementById("savedScores").style.display = "block";
+    }
+});
