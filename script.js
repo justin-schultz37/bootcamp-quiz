@@ -109,7 +109,11 @@ function handleAnswerClick(answer) {
     if (answer.correct === true) {
         nextButton.textContent = 'Correct!';
     } else {
-        nextButton.textContent = 'Incorrect';
+        nextButton.textContent = 'Wrong!';
+        timeLeft -= 2;
+        if (timeLeft < 0) {
+            timeLeft = 0;
+        }
     }
 
     nextButton.disabled = false;
