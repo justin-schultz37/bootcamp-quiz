@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Quiz Time Challenge</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- This is the total area for the quiz elements -->
     <div class="quiz-container">
         <h1>Coding Quiz Challenge</h1>
         <div id="timer">Time left: 60 seconds</div>
@@ -22,6 +23,7 @@
                 <button class="answer-btn">Answer 4</button>
                 <button id="next-btn" disabled>Next</button>
             </div>
+            <!-- This section is hidden until quiz is completed -->
         </div>
         <div id="result" style="display: none;"></div>
         <div id="finalScore" style="display: none;">
@@ -30,12 +32,14 @@
             <input type="text" id="initials">
             <button id="saveButton">Save</button>
         </div>
+        <!-- This is the score table that appears when quiz is complete and initials are saved -->
         <div class="score-table" id="savedScores" style="display: none;">
             <h2>Saved Scores</h2>
             <button id="restart-btn">Restart Quiz</button>
             <ul id="scoreList"></ul>
         </div>
     </div>
+    <!-- link to the javascript page -->
     <script src="script.js"></script>
 </body>
 

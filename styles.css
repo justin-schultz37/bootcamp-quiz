@@ -1,3 +1,4 @@
+/* Variables */
 :root {
     --primary-color: #e5562a;
     --secondary-color: #f4f4f4;
@@ -23,6 +24,7 @@ body {
     text-align: center;
 }
 
+/* Controls the style of the answer, next, start, and restart buttons */
 .answer-btn,
 .next-btn,
 #start-btn,
@@ -60,6 +62,7 @@ body {
     background-color: #f08061;
 }
 
+/* Styles list element once initials are received from the quiz user */
 .score-table li {
     text-align: left;
     width: 100%;

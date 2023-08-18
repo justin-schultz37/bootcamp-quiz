@@ -1,3 +1,4 @@
+// List of variables created that are linked to elements found in the HTML
 const questionElement = document.getElementById("question");
 const answerButtons = document.querySelectorAll(".answer-btn");
 const nextButton = document.getElementById("next-btn");
@@ -6,8 +7,10 @@ const timerElement = document.getElementById("timer");
 const saveButton = document.getElementById("saveButton");
 const scoreList = document.getElementById("scoreList");
 
+// Sets the initial score to 0
 let score = 0;
 
+// The questions and answers that the user will see when interracting with the quiz
 const questions = [
     {
         question: "Commonly used data types do NOT include:",
@@ -57,6 +60,7 @@ let currentQuestionIndex = -1;
 let timerInterval;
 let timeLeft = 60;
 
+//The function that displays the questions and answers
 function showQuestion(question) {
     questionElement.innerText = question.question;
 
@@ -73,6 +77,7 @@ function showQuestion(question) {
     nextButton.disabled = true;
 }
 
+//This function runs when the start quiz button is click
 function startQuiz() {
     currentQuestionIndex = 0;
     showQuestion(questions[currentQuestionIndex]);
@@ -81,6 +86,7 @@ function startQuiz() {
     nextButton.disabled = true;
     startButton.disabled = true;
     startTimer();
+
 }
 
 function startTimer() {
@@ -103,7 +109,7 @@ function handleTimeUp() {
     clearInterval(timerInterval); // Stop the timer
     nextQuestion();
 }
-
+// This function checks if the answer selected is true or false, and will increase score or subtract from time remaining
 function handleAnswerClick(answer) {
     answerButtons.forEach((button) => {
         button.removeEventListener("click", handleAnswerClick);
@@ -123,7 +129,7 @@ function handleAnswerClick(answer) {
 
     nextButton.disabled = false;
 }
-
+// This make the quiz progress until all questions are answered, and displays the score HTML elements
 function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
@@ -135,7 +141,25 @@ function nextQuestion() {
         document.getElementById("score").textContent = score;
     }
 }
+// Resets the score, time, question index, hides final score elements, and re-displays the start quiz elements.
+function restartQuiz() {
+    currentQuestionIndex = -1;
+    score = 0;
+    timeLeft = 60;
+    clearInterval(timerInterval);
+    updateTimer();
 
+    // Hide and show the appropriate sections
+    document.getElementById("quizContainer").style.display = "none";
+    document.getElementById("finalScore").style.display = "none";
+    document.getElementById("savedScores").style.display = "none";
+
+    // Show the "Start Quiz" button again
+    document.getElementById("start-btn").style.display = "block";
+    document.getElementById("start-btn").disabled = false;
+}
+
+// The event listeners for the start, next, save, and reset buttons.
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 saveButton.addEventListener("click", function () {
@@ -156,3 +180,5 @@ saveButton.addEventListener("click", function () {
         document.getElementById("savedScores").style.display = "block";
     }
 });
+const restartButton = document.getElementById("restart-btn");
+restartButton.addEventListener("click", restartQuiz);
