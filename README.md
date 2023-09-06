@@ -4,7 +4,9 @@ Description
 A time quiz where user begins quiz, and answers a series of questions related to general HTML, CSS, and Javascript. Once completed user can submit their initals with their score.
 ![Article Preview](./Assets/images/screenshot-127.0.0.1_5501-2023.08.18-14_25_16.png)
 
-Installation N/A
+Installation 
+
+URL: https://justin-schultz37.github.io/bootcamp-quiz/
 
 Usage
 This quiz allows users to time test their coding knowledge by answering questions.
